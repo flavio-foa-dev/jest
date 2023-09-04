@@ -1,15 +1,18 @@
-const somaHorasExtras = (salario, valorHorasExtras) => salario + valorHorasExtras;
+import Carrinho from './carrinho';
+import Item from './item';
 
-const calculaDescontos = (salario, descontos) => salario - descontos;
+const carrinho = new Carrinho();
 
-const teste = (titulo, esperado, retornado) => {
-  if (esperado === retornado) {
-    console.log(`${titulo} passou`);
-  } else {
-    console.error(`${titulo} não passou`);
-  }
-};
+carrinho.adiciona(new Item('Maçã', 1, 3));
+carrinho.adiciona(new Item('Banana', 1.4, 5));
+carrinho.adiciona(new Item('Melancia', 2, 1));
+carrinho.adiciona(new Item('Uva', 4.3, 2));
+carrinho.adiciona(new Item('Açaí', 3, 5));
 
-teste('somaHorasExtras', 2500, somaHorasExtras(2000, 500));
+carrinho.adicionaFrete(15);
 
-teste('calculaDesconto', 2200, calculaDescontos(2500, 300));
+carrinho.calculaSubtotal();
+
+carrinho.finalizaCompra();
+
+console.log(carrinho);
